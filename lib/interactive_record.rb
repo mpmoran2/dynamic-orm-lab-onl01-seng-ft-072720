@@ -5,8 +5,8 @@ require 'pry'
 class InteractiveRecord
   #check all punctuations and for little dots and all ends and spelling please
   def initialize(attribute = {})
-    attribute.each do |prop, val|
-      self.send("#{prop}=", val)
+    attribute.each do |property, value|
+      self.send("#{property}=", value)
     end 
   end  
   
