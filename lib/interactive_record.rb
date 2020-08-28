@@ -3,14 +3,18 @@ require 'active_support/inflector'
 require 'pry'
 
 class InteractiveRecord
+  #check all punctuations and for little dots and all ends and spelling please
   
   def self.table_name
+    self.to_s.downcase.pluralize 
   end
   
   def self.column_names
   end 
   
-  def initialize
+  def initialize()
+    options.each do |k, v|
+      self.send("#{k}=", v)
   end 
   
   def table_name_for_insert
@@ -31,4 +35,5 @@ class InteractiveRecord
   def self.find_by
   end 
   
+  #did you check the punctiation and spellings?
 end
