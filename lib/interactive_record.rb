@@ -33,6 +33,7 @@ class InteractiveRecord
   end 
 
   def table_name_for_insert
+    self.class.table_name
   end 
   
   def col_names_for_insert #make sure to look at spec for method names
@@ -40,6 +41,8 @@ class InteractiveRecord
   end 
   
   def values_for_insert
+    values = []
+    self.class.column_names.each do ||
   end
   
  
