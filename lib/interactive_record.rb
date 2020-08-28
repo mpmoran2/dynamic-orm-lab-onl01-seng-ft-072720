@@ -9,6 +9,9 @@ class InteractiveRecord
       self.send("#{prop}=", val)
   end  
   
+  def save
+  end
+  
   def self.table_name
     self.to_s.downcase.pluralize 
   end
@@ -27,8 +30,7 @@ class InteractiveRecord
   def values_for_insert
   end
   
-  def save
-  end 
+ 
   
   def self.find_by_name
   end 
