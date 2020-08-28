@@ -7,7 +7,12 @@ require 'active_support/inflector'
 require 'pry'
 
 class InteractiveRecord
-    
+  def initialize(attributes = {})
+    attributes.each do |key, value|
+      self.send("#{key}=", value)
+    end
+  end  
+  
   def self.table_name
     self.to_s.downcase.pluralize
   end
@@ -23,11 +28,7 @@ class InteractiveRecord
       column_names.compact
   end
 
-  def initialize(attributes = {})
-    attributes.each do |key, value|
-      self.send("#{key}=", value)
-    end
-  end
+  
 
   def table_name_for_insert
     self.class.to_s.downcase.pluralize
