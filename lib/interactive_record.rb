@@ -7,6 +7,7 @@ class InteractiveRecord
   def initialize(attribute = {})
     attribute.each do |prop, val|
       self.send("#{prop}=", val)
+    end 
   end  
   
   def save
