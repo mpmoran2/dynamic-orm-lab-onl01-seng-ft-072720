@@ -11,6 +11,7 @@ class InteractiveRecord
   
   def save
     sql = "INSERT INTO #{table_name_for_insert} (#{col_names_for_insert}) VALUES (#{values_for_insert})")
+    
     DB[:conn].execute(sql)
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
   end
@@ -22,8 +23,11 @@ class InteractiveRecord
   def self.column_names
     sql = "PRAGMA table_info('#{table_name}')"
     
-    table_info
-    
+    table_info = DB[:conn].execute(sql)
+    column_names = []
+    table_info.each do |column|
+      column_names << column["name"]
+    end 
   end 
 
   def table_name_for_insert
