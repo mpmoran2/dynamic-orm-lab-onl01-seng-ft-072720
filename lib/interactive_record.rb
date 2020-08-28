@@ -42,11 +42,12 @@ class InteractiveRecord
   
   def values_for_insert
     values = []
-    self.class.column_names.each do ||
+    self.class.column_names.each do |column_names|
+      values << "'#{self.send(column_names}'" unless send(column_names).nil?
+    end
+    values.join(",")
   end
-  
  
-  
   def self.find_by_name
   end 
   
