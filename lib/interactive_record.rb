@@ -37,7 +37,7 @@ class InteractiveRecord
   end 
   
   def col_names_for_insert #make sure to look at spec for method names
-    self.class.column_names.delete_if{|column| column == "id"}.join(", ")
+    self.class.column_names.delete_if{|col_name| col_name == "id"}.join(", ")
   end 
   
   def values_for_insert
@@ -48,10 +48,13 @@ class InteractiveRecord
     values.join(",")
   end
  
-  def self.find_by_name
+  def self.find_by_name(name)
+    DB[:conn].execute("SELECT * FROM #{table_name} WHERE name = ?", name)
   end 
   
-  def self.find_by
+  def self.find_by(attribute)
+    column = attribute.keys[0].to_s
+    value = attribute.values[0]
   end 
   
   #did you check the punctiation and spellings?
