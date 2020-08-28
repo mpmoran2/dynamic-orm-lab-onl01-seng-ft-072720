@@ -20,6 +20,9 @@ class InteractiveRecord
   end
   
   def self.column_names
+    sql = "PRAGMA table_info('#{table_name}')"
+    
+    table_info
     
   end 
 
