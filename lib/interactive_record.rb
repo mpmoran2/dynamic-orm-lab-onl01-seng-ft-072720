@@ -20,14 +20,14 @@ class InteractiveRecord
   end
   
   def self.column_names
-    self.class.column_names.delete_if{|column_name| column_name == "id"}.join(", ")
+    
   end 
- 
-  
+
   def table_name_for_insert
   end 
   
   def col_names_for_insert #make sure to look at spec for method names
+    self.class.column_names.delete_if{|column| column == "id"}.join(", ")
   end 
   
   def values_for_insert
