@@ -4,6 +4,10 @@ require 'pry'
 
 class InteractiveRecord
   #check all punctuations and for little dots and all ends and spelling please
+  def initialize(attribute = {})
+    attribute.each do |prop, val|
+      self.send("#{prop}=", val)
+  end  
   
   def self.table_name
     self.to_s.downcase.pluralize 
@@ -12,10 +16,7 @@ class InteractiveRecord
   def self.column_names
   end 
   
-  def initialize(attribute = {})
-    attribute.each do |prop, val|
-      self.send("#{prop}=", val)
-  end 
+  
   
   def table_name_for_insert
   end 
