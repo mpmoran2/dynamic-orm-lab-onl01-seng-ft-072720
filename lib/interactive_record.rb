@@ -29,6 +29,7 @@ class InteractiveRecord
     table_info.each do |column|
       column_names << column["name"]
     end 
+    column_names.compact
   end 
 
   def table_name_for_insert
