@@ -12,9 +12,9 @@ class InteractiveRecord
   def self.column_names
   end 
   
-  def initialize()
-    options.each do |k, v|
-      self.send("#{k}=", v)
+  def initialize(attribute = {})
+    attribute.each do |prop, val|
+      self.send("#{prop}=", val)
   end 
   
   def table_name_for_insert
