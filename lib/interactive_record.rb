@@ -55,6 +55,8 @@ class InteractiveRecord
   def self.find_by(attribute)
     column = attribute.keys[0].to_s
     value = attribute.values[0]
+    
+    DB[:conn].execute("SELECT * FROM #{table_name} WHERE #{column} = ?", value)
   end 
   
   #did you check the punctiation and spellings?
